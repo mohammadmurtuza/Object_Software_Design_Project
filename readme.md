@@ -1,3 +1,5 @@
-<h3>This is th repository for Object Software Design Course Project Progress</h3>
+#Object Software Design Course Project Repository
+This repository serves as the central location for tracking the progress and final submission of the Object Software Design course project.
 
-<h3>By: Mohammad Murtuza </h3>
+#About
+The project is managed and maintained by Mohammad Murtuza.
