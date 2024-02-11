@@ -1,6 +1,6 @@
 from road import Dynamic
 from constants import Constants
-
+from abc import ABC, abstractmethod
 
 class Vehicle(Dynamic):
     def __init__(self):
@@ -11,12 +11,15 @@ class Vehicle(Dynamic):
         self.color = None 
         self.currentDirection = 0
         self.currentLocation = (0, 0)
+        
 
     def get_current_speed(self):
         return self.current_speed
 
+
     def set_desired_speed(self, mph):
         self.desired_speed = mph
+
     
     def set_current_speed(self, speed):
         if self.current_speed <= speed:  # accelerating
@@ -29,6 +32,7 @@ class Vehicle(Dynamic):
                 self.current_speed = self.desired_speed
             else:
                 self.current_speed = speed
+
     
     def update_speed(self, seconds):
         if self.current_speed > self.desired_speed:
@@ -36,12 +40,15 @@ class Vehicle(Dynamic):
         elif self.current_speed < self.desired_speed:
             self.accelerate(seconds)
       
-
+    @abstractmethod
     def accelerate(self, seconds_delta):
         pass
 
+
+    @abstractmethod
     def decelerate(self, seconds_delta):
         pass
+
 
     def Turn(self, direction, degrees):
         #print(f"Turning {direction} {degrees}°") # for debugging purposes
