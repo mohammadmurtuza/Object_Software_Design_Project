@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 class ISimOutput(ABC):
     @abstractmethod
     def get_speed(self, vehicle):
-        pass
+        raise NotImplementedError
 
 class MetricOutput(ISimOutput):
     def get_speed(self, vehicle):
