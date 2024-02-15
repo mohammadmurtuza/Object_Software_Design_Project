@@ -7,9 +7,9 @@ from constants import Constants
 
 def main():
 
-    sim_output = MetricOutput() #for Kilometer
+   #  sim_output = MetricOutput() #for Kilometer
     # OR
-    # sim_output = ImperialOutput() #for Miles
+    sim_output = ImperialOutput() #for Miles
 
     car = Car()
     car.set_desired_speed(65.0)
