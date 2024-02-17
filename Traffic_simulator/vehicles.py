@@ -60,10 +60,13 @@ class Car(Vehicle):
         super().__init__() #The super() function is used to give access to methods and properties of a parent or sibling class.
 
     def accelerate(self, seconds_delta):
-        self.set_current_speed(self.get_current_speed() + Constants.AccRate * seconds_delta * Constants.MpsToMph)
+        # Acceleration now directly uses m/s without conversion
+        self.set_current_speed(self.get_current_speed() + Constants.AccRate * seconds_delta)
 
     def decelerate(self, seconds_delta):
-        self.set_current_speed(self.get_current_speed() - Constants.DecRate * seconds_delta * Constants.MpsToMph)
+        # Deceleration now directly uses m/s without conversion
+        self.set_current_speed(self.get_current_speed() - Constants.DecRate * seconds_delta)
+
 
 class Truck(Vehicle):
     def __init__(self,weight):
@@ -75,16 +78,14 @@ class Truck(Vehicle):
         pass
 
     def accelerate(self, seconds_delta):
-        if self.loadWeight <= 5:
-            self.set_current_speed(self.get_current_speed() + Constants.AccRateEmpty * seconds_delta * Constants.MpsToMph)
-        else:
-            self.set_current_speed(self.get_current_speed() + Constants.AccRateFull * seconds_delta * Constants.MpsToMph)
+        # Accelerate based on load weight without conversion
+        acc_rate = Constants.AccRateEmpty if self.loadWeight <= 5 else Constants.AccRateFull
+        self.set_current_speed(self.get_current_speed() + acc_rate * seconds_delta)
 
     def decelerate(self, seconds_delta):
-        if self.loadWeight <= 5:
-            self.set_current_speed(self.get_current_speed() - Constants.DecRateEmpty * seconds_delta * Constants.MpsToMph)
-        else:
-            self.set_current_speed(self.get_current_speed() - Constants.DecRateFull * seconds_delta * Constants.MpsToMph)
+        # Decelerate based on load weight without conversion
+        dec_rate = Constants.DecRateEmpty if self.loadWeight <= 5 else Constants.DecRateFull
+        self.set_current_speed(self.get_current_speed() - dec_rate * seconds_delta)
 
 
 

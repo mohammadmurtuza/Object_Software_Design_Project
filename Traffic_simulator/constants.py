@@ -6,3 +6,4 @@ class Constants:
     DecRateEmpty = 5.0  # Braking rate for light trucks in m/s
     DecRateFull = 2.0  # Braking rate for light trucks in m/s
     MpsToMph = 2.237
+    MpsToKph = 3.6
