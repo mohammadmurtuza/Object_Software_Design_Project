@@ -13,7 +13,7 @@ def main():
     else:
         gui = ImperialGUI()
     
-    # User input for speed limit
+    # User input for speed limit...
     speed_limit = float(input("Enter the speed limit: "))
     
     # Initialize vehicles and set their desired speed using the GUI
