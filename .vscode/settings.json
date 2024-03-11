@@ -1,10 +1,16 @@
 {
   "cSpell.words": [
+    "dtype",
     "dynamicroaditem",
+    "locx",
+    "locy",
     "Murtuza",
     "nextitem",
     "previtem",
     "Roaditem",
-    "roaditems"
-  ]
+    "roaditems",
+    "xlocation",
+    "ylocation"
+  ],
+  "python.analysis.extraPaths": ["./Traffic SImulator"]
 }
