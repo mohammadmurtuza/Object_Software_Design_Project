@@ -80,19 +80,6 @@ class RoadItem:
     def get_mile_marker(self):
         return self.mile_marker
 
-    # Placeholder for additional methods to set and get properties as per the commented-out logic
-    # def set_previous(self, prev):
-    #     self.prev_item = prev
-
-    # def set_next(self, next):
-    #     self.next_item = next
-
-    # def get_next(self):
-    #     return self.next_item
-
-    # def set_current_road(self, road):
-    #     self.current_road = road
-
     def GetCurrentRoad(self):
         return self.currentRoad
 
