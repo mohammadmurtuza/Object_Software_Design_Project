@@ -20,10 +20,10 @@ class IPrintDriver(ABC):
         pass
 
 class ConsolePrint(IPrintDriver):
-    def __init__(self):
-        self.traffic_lights = {(30, 30): 'X', (30, 10): 'X'}
-        self.light_states = {'X': ('red', 5), '-': ('yellow', 3), 'O': ('green', 5)}
-        self.current_state = {pos: 'X' for pos in self.traffic_lights}
+    # def __init__(self):
+    #     self.traffic_lights = {(30, 30): 'X', (30, 10): 'X'}
+    #     self.light_states = {'X': ('red', 5), '-': ('yellow', 3), 'O': ('green', 5)}
+    #     self.current_state = {pos: 'X' for pos in self.traffic_lights}
 
     def print_road(self, road, obj):
         cm = obj
@@ -72,27 +72,22 @@ class ConsolePrint(IPrintDriver):
                         cm.map[y + 2][x] = '-'
                         cm.map[y + 4][x] = '-'
                     distance += 1
-        # Similar implementation for other headings...
                     
         # Draw traffic lights at specified positions
-        for position, state in self.traffic_lights.items():
-            x, y = position
-            if 0 <= x < Constants.CharMapSize and 0 <= y < Constants.CharMapSize:
-                cm.map[y][x] = state
+    #     for position, state in self.traffic_lights.items():
+    #         x, y = position
+    #         if 0 <= x < Constants.CharMapSize and 0 <= y < Constants.CharMapSize:
+    #             cm.map[y][x] = state
 
-    def update_lights(self):
-        print("Updating traffic lights...")
-        while True:
-            for position, (state, duration) in self.light_states.items():
-                self.current_state[position] = state
-                self.traffic_lights[position] = state  # Update current state
-                print(f"Traffic light at position {position} set to state {state}")
-                sleep(duration)
-                next_state = {'red': '-', 'yellow': 'O', 'green': 'X'}
-                self.current_state[position] = next_state[state]
-                self.traffic_lights[position] = next_state[state]
-                print(f"Traffic light at position {position} changed to state {next_state[state]}")
-
+    # def update_lights(self):
+    #     while True:
+    #         for position, (state, duration) in self.light_states.items():
+    #             self.current_state[position] = state
+    #             self.traffic_lights[position] = state  # Update current state
+    #             sleep(duration)
+    #             next_state = {'red': '-', 'yellow': 'O', 'green': 'X'}
+    #             self.current_state[position] = next_state[state]
+    #             self.traffic_lights[position] = next_state[state]
 
 
     def print_car(self, car, obj):

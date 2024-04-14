@@ -1,5 +1,5 @@
 from enum import Enum
-
+from abc import ABC,abstractmethod
 # Heading enum translated from C#
 class Heading(Enum):
     North = 1
@@ -71,9 +71,9 @@ class Road:
 
 # Preserving the existing RoadItem class
 class RoadItem:
-    def __init__(self):
-        self.mile_marker = None
-        self.current_road = None
+    def __init__(self,mile_marker,current_road = None):
+        self.mile_marker = mile_marker
+        self.current_road = current_road
         self.next_item = None
         self.prev_item = None
 
@@ -99,10 +99,16 @@ class RoadItem:
         self.nextitem = item
 
 
-class Dynamic(RoadItem):
-    def __init__(self):
-        super().__init__()
-        self.upDate = 0
+class Dynamic(RoadItem, ABC):
+    def __init__(self,mile_marker,current_road = None):
+        super().__init__(mile_marker)
+        self.mile_marker = mile_marker
+        self.current_road = current_road
+    
+    @abstractmethod
+
+    def update(self, seconds: int):
+        pass
 
         
 class Static(RoadItem):
