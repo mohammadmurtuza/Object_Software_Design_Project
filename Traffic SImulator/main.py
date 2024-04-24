@@ -15,6 +15,7 @@ def main():
 
     # Road
     Uptown = simInput.create_road("Uptown", 0.0, -0.09, .180, Heading.North)
+
     cm = CharMatrix(Constants.CharMapSize)
     map_obj = Map()
     map_obj.add_road(Uptown)

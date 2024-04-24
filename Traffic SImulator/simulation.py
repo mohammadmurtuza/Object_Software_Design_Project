@@ -44,9 +44,9 @@ eeeee eeeee  eeeee eeee eeee e  eeee    eeeee e  eeeeeee e   e e     eeeee eeeee
   88  88   8 88  8 88   88   88 88         88 88 88 8  8 88  8 88    88  8   88  8   8 88   8 
   88  88   8 88  8 88   88   88 88e8    8ee88 88 88 8  8 88ee8 88eee 88  8   88  8eee8 88   8                                                                                                                                                                                                                                                                                                                               
   ----------------------------------------------------------------------------------------------------
-    X : Red
-    - : Yellow
-    O : Green''')
+X : Red
+- : Yellow
+O : Green''')
 
     def update(self):
         print("Simulation updated")
