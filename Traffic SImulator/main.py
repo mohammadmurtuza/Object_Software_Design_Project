@@ -19,7 +19,7 @@ def main():
     cm = CharMatrix(Constants.CharMapSize)
     map_obj = Map()
     map_obj.add_road(Uptown)
-    cp = ConsolePrint()
+    cp = ConsolePrint() 
     map_obj.print(cp, cm)
 
 
