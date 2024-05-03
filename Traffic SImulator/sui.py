@@ -25,12 +25,13 @@ class ConsolePrint(IPrintDriver):
     #     self.light_states = {'X': ('red', 5), '-': ('yellow', 3), 'O': ('green', 5)}
     #     self.current_state = {pos: 'X' for pos in self.traffic_lights}
 
-    def print_road(self, road, obj):
-        cm = obj
+    def print_road(self, road, o):
+        cm = o
         CCx = Conversions.wc_point_to_cc_point(road.get_xlocation())
         CCy = Conversions.wc_point_to_cc_point(-road.get_ylocation())
         distance = 0
         CCRoadLength = Conversions.wc_length_to_cc_length(road.get_length())
+        items = road.get_road_items()
 
         if road.get_heading() == Heading.North:
             x = int(CCx)
@@ -41,6 +42,9 @@ class ConsolePrint(IPrintDriver):
                         cm.map[y][x] = '|'
                         cm.map[y][x + 2] = '|'
                         cm.map[y][x + 4] = '|'
+                        for ri in items:
+                            if y == ri.get_mile_marker():
+                                cm.map[y][x + 6] = ri.print_road_item()
                     distance += 1
         elif road.get_heading() == Heading.East:
             y = int(CCy)

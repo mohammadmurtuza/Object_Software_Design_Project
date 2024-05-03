@@ -1,26 +1,30 @@
-from road import Dynamic
+from road import RoadItem
 import time
-class TrafficLight(Dynamic):
-    def __init__(self, mile_marker, red_duration, yellow_duration, green_duration, start_color='red'):
+class TrafficLight(RoadItem):
+    def __init__(self, red_duration, yellow_duration, green_duration, start_color, mile_marker):
         super().__init__(mile_marker)
-        self.mile_marker=mile_marker
         self.red_duration = red_duration
         self.yellow_duration = yellow_duration
         self.green_duration = green_duration
-        self.current_color = start_color
-        self.timer = 0  # Initialize timer to keep track of light changes
+        self.state = start_color
+        self.last_change = time.time()
 
-    def update(self, seconds=1):
-        self.timer += seconds
-        # Calculate the total duration of the traffic light cycle
-        cycle_duration = self.red_duration + self.yellow_duration + self.green_duration
-        # Using modulo to cycle through the light colors
-        self.timer %= cycle_duration
-        if self.timer <= self.red_duration:
-            self.current_color = 'red'
-        elif self.timer <= self.red_duration + self.green_duration:
-            self.current_color = 'green'
-        else:
-            self.current_color = 'yellow'
+    def update(self, seconds_passed):
+        current_time = time.time()
+        if self.state == 'red' and current_time - self.last_change >= self.red_duration:
+            self.state = 'green'
+            self.last_change = current_time
+        elif self.state == 'green' and current_time - self.last_change >= self.green_duration:
+            self.state = 'yellow'
+            self.last_change = current_time
+        elif self.state == 'yellow' and current_time - self.last_change >= self.yellow_duration:
+            self.state = 'red'
+            self.last_change = current_time
 
-    
+    def print_road_item(self):
+        if self.state == 'red':
+            return 'X'
+        elif self.state == 'green':
+            return 'O'
+        elif self.state == 'yellow':
+            return '-'
